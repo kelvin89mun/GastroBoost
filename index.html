@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GastroBoost — More 5-Star Reviews. Zero Missed Bookings.</title>
+<meta name="description" content="Smart Google review funnel + 24/7 WhatsApp assistant for restaurants. Fully set up for you. 14-day free trial, €199/month after.">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#330E4D;
+  --magenta:#E0189F;
+  --purple:#8B2FC9;
+  --teal:#14C2AD;
+  --gold:#F5B301;
+  --wa:#25D366;
+  --bg:#FDFAFE;
+  --bg-soft:#F6EEFA;
+  --body:#5A4A68;
+  --card:#FFFFFF;
+  --grad:linear-gradient(120deg,#E0189F 0%,#8B2FC9 55%,#14C2AD 130%);
+  --shadow:0 12px 34px rgba(51,14,77,.12);
+  --radius:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Instrument Sans',sans-serif;color:var(--body);background:var(--bg);line-height:1.65;font-size:17px;overflow-x:hidden}
+h1,h2,h3{font-family:'Unbounded',sans-serif;color:var(--ink);line-height:1.18;letter-spacing:-.01em}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:92px 0}
+.eyebrow{display:inline-block;font-family:'Unbounded';font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--magenta);background:rgba(224,24,159,.08);padding:8px 16px;border-radius:100px;margin-bottom:20px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:'Instrument Sans';font-weight:700;font-size:17px;padding:17px 32px;border-radius:100px;text-decoration:none;transition:transform .18s ease, box-shadow .18s ease;cursor:pointer;border:none;position:relative;overflow:hidden}
+.btn:hover{transform:translateY(-3px) scale(1.02)}
+.btn-primary{background:linear-gradient(120deg,#E0189F,#8B2FC9);background-size:160% 160%;color:#fff;box-shadow:0 10px 28px rgba(224,24,159,.40);animation:btnGlow 3.5s ease infinite}
+@keyframes btnGlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.btn-primary:hover{box-shadow:0 14px 38px rgba(224,24,159,.5)}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 28px rgba(37,211,102,.38)}
+.btn-note{font-size:13.5px;color:var(--body);margin-top:12px;opacity:.85}
+
+/* Scroll reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(253,250,254,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(51,14,77,.07)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;max-width:1120px;margin:0 auto}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-brand img{height:40px;width:auto}
+.nav-brand span{font-family:'Unbounded';font-weight:800;font-size:18px;color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.lang-toggle{display:flex;border:1.5px solid rgba(51,14,77,.15);border-radius:100px;overflow:hidden;background:#fff}
+.lang-toggle button{border:none;background:transparent;padding:8px 15px;font-weight:700;font-size:14px;color:var(--body);cursor:pointer;font-family:'Instrument Sans';transition:background .15s}
+.lang-toggle button.active{background:var(--ink);color:#fff}
+.nav-cta{font-size:15px;padding:11px 22px}
+@media(max-width:640px){.nav-cta{display:none}.nav-brand span{display:none}}
+
+/* HERO */
+.hero{padding:76px 0 100px;position:relative;background:
+  radial-gradient(720px 420px at 88% -5%, rgba(139,47,201,.13), transparent 60%),
+  radial-gradient(620px 420px at -5% 105%, rgba(20,194,173,.10), transparent 60%)}
+.float-emoji{position:absolute;font-size:34px;opacity:.16;animation:floaty 7s ease-in-out infinite;pointer-events:none;user-select:none}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-22px) rotate(8deg)}}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center;position:relative}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(30px,4.4vw,52px);font-weight:900;margin-bottom:24px}
+.hero h1 .hl{background:var(--grad);background-size:220% 220%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 5s ease infinite}
+@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero p.sub{font-size:19px;margin-bottom:32px;max-width:540px}
+.badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.badge{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;color:var(--ink);background:#fff;border:1px solid rgba(51,14,77,.10);border-radius:100px;padding:8px 15px;box-shadow:0 3px 10px rgba(51,14,77,.06)}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulseDot 2s ease infinite}
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(20,194,173,.5)}50%{box-shadow:0 0 0 6px rgba(20,194,173,0)}}
+
+/* PHONE DEMO */
+.phone-wrap{position:relative}
+.phone{width:302px;margin:0 auto;background:#20092F;border-radius:40px;padding:12px;box-shadow:0 34px 80px rgba(51,14,77,.32);animation:phoneFloat 6s ease-in-out infinite}
+@keyframes phoneFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.phone-screen{background:#fff;border-radius:30px;overflow:hidden;min-height:490px;display:flex;flex-direction:column}
+.phone-top{background:var(--grad);background-size:200% 200%;animation:gradShift 6s ease infinite;padding:24px 18px 20px;text-align:center;color:#fff}
+.phone-top .rest-name{font-family:'Unbounded';font-weight:700;font-size:15px}
+.phone-top .rest-sub{font-size:12.5px;opacity:.88}
+.demo-body{padding:28px 20px;flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+.demo-q{font-weight:700;color:var(--ink);font-size:16.5px;margin-bottom:20px}
+.stars{display:flex;gap:8px;margin-bottom:24px}
+.star{font-size:36px;cursor:pointer;color:#E9E0F0;transition:transform .15s ease,color .15s ease;background:none;border:none;line-height:1;animation:starNudge 2.6s ease infinite}
+.star:nth-child(2){animation-delay:.12s}.star:nth-child(3){animation-delay:.24s}.star:nth-child(4){animation-delay:.36s}.star:nth-child(5){animation-delay:.48s}
+@keyframes starNudge{0%,88%,100%{transform:scale(1)}93%{transform:scale(1.12)}}
+.star.lit{color:var(--gold);text-shadow:0 3px 12px rgba(245,179,1,.45);animation:none}
+.star:hover{transform:scale(1.22)}
+.demo-result{opacity:0;transform:translateY(8px);transition:all .35s ease;width:100%}
+.demo-result.show{opacity:1;transform:translateY(0)}
+.route-card{border-radius:16px;padding:18px 16px;font-size:14px;font-weight:600;line-height:1.5}
+.route-google{background:#EDF9F1;border:1.5px solid #ADE3C3;color:#1E7A46}
+.route-wa{background:#FFF4E6;border:1.5px solid #F5D3A2;color:#9A5B00}
+.route-card .route-icon{font-size:28px;margin-bottom:8px}
+.demo-hint{font-size:12.5px;color:var(--body);margin-top:auto;padding-top:18px;opacity:.7}
+.demo-caption{text-align:center;font-size:14px;color:var(--body);margin-top:20px;font-weight:600}
+
+/* PAIN */
+.pain{background:var(--ink);color:#DACDE7;position:relative;overflow:hidden}
+.pain::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 300px at 90% 10%, rgba(224,24,159,.18), transparent 65%)}
+.pain .wrap{position:relative}
+.pain h2{color:#fff;font-size:clamp(24px,3.4vw,38px);margin-bottom:16px}
+.pain .lead{font-size:18px;max-width:640px;margin-bottom:42px}
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:760px){.pain-grid{grid-template-columns:1fr}}
+.pain-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:var(--radius);padding:28px;transition:transform .2s ease, background .2s ease}
+.pain-card:hover{transform:translateY(-5px);background:rgba(255,255,255,.09)}
+.pain-card .pi{font-size:30px;margin-bottom:12px}
+.pain-card h3{color:#fff;font-size:16.5px;margin-bottom:10px}
+.pain-card p{font-size:15.5px}
+.pain-close{margin-top:44px;font-size:20px;font-weight:700;color:#fff}
+.pain-close em{background:linear-gradient(120deg,#F686D0,#7EE8DA);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:normal}
+
+/* PILLARS */
+.pillars{background:var(--bg-soft)}
+.sec-head{text-align:center;max-width:720px;margin:0 auto 60px}
+.sec-head h2{font-size:clamp(24px,3.4vw,40px);margin-bottom:14px}
+.pillar{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:46px;margin-bottom:30px;transition:transform .2s ease, box-shadow .2s ease;border-top:5px solid transparent}
+.pillar:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(51,14,77,.16)}
+.pillar:nth-of-type(1){border-top-color:var(--magenta)}
+.pillar:nth-of-type(2){border-top-color:var(--purple)}
+.pillar:nth-of-type(3){border-top-color:var(--teal)}
+@media(max-width:820px){.pillar{grid-template-columns:1fr;padding:30px}}
+.pillar-num{font-family:'Unbounded';font-weight:800;font-size:13px;color:var(--magenta);letter-spacing:.14em;margin-bottom:12px}
+.pillar h3{font-size:22px;margin-bottom:8px}
+.pillar .p-tag{font-weight:700;color:var(--purple);margin-bottom:16px;font-size:16px}
+.pillar ul{list-style:none;margin:0 0 18px}
+.pillar li{padding-left:32px;position:relative;margin-bottom:11px;font-size:16px}
+.pillar li::before{content:"✓";position:absolute;left:0;top:1px;width:22px;height:22px;background:rgba(20,194,173,.14);color:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+.pillar .result{background:rgba(224,24,159,.06);border-left:4px solid var(--magenta);padding:14px 17px;border-radius:0 12px 12px 0;font-size:15px;font-weight:600;color:var(--ink)}
+.pillar-visual{display:flex;justify-content:center}
+.mock{background:linear-gradient(160deg,#F6EEFA,#EDDDF5);border-radius:var(--radius);padding:28px;width:100%;max-width:380px}
+.chat-bub{background:#fff;border-radius:14px 14px 14px 4px;padding:13px 16px;font-size:14px;margin-bottom:10px;box-shadow:0 3px 10px rgba(51,14,77,.07);color:var(--ink)}
+.chat-bub.me{background:#DCF8C6;border-radius:14px 14px 4px 14px;margin-left:36px}
+.chat-time{font-size:11px;color:var(--body);opacity:.6;text-align:right;margin-top:2px}
+.maps-mock{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(51,14,77,.09)}
+.maps-row{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid #F1E8F6;font-size:14px}
+.maps-row .rank{font-weight:800;font-family:'Unbounded';color:var(--body);width:22px;font-size:15px}
+.maps-row.you{background:linear-gradient(90deg,rgba(224,24,159,.08),rgba(139,47,201,.05))}
+.maps-row.you .rank{color:var(--magenta)}
+.maps-row .rname{font-weight:700;color:var(--ink)}
+.maps-row .rstars{font-size:12px;color:var(--gold)}
+.maps-row .you-tag{margin-left:auto;font-size:11px;font-weight:800;color:#fff;background:linear-gradient(120deg,#E0189F,#8B2FC9);padding:4px 10px;border-radius:100px;font-family:'Unbounded'}
+
+/* OFFER */
+.offer-card{max-width:780px;margin:0 auto;background:var(--card);border-radius:30px;box-shadow:0 28px 70px rgba(51,14,77,.16);overflow:hidden;text-align:center;position:relative}
+.offer-top{background:var(--grad);background-size:200% 200%;animation:gradShift 6s ease infinite;color:#fff;padding:20px;font-weight:800;font-family:'Unbounded';font-size:15px;letter-spacing:.05em}
+.offer-body{padding:50px 42px}
+@media(max-width:640px){.offer-body{padding:36px 22px}}
+.offer-body h2{font-size:clamp(22px,3vw,32px);margin-bottom:10px}
+.price-row{display:flex;align-items:baseline;justify-content:center;gap:8px;margin:8px 0 4px}
+.price{font-family:'Unbounded';font-weight:900;font-size:64px;background:var(--grad);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 5s ease infinite}
+.price-per{font-size:18px;font-weight:600}
+.price-sub{font-size:15px;margin-bottom:28px}
+.promise{background:var(--bg-soft);border-radius:18px;padding:24px 28px;font-size:17px;font-weight:600;color:var(--ink);margin-bottom:30px;line-height:1.6;border:1.5px dashed rgba(139,47,201,.3)}
+.offer-list{list-style:none;text-align:left;max-width:500px;margin:0 auto 32px}
+.offer-list li{padding-left:34px;position:relative;margin-bottom:13px;font-size:16px}
+.offer-list li::before{content:"✓";position:absolute;left:0;width:23px;height:23px;background:rgba(20,194,173,.14);color:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+
+/* ABOUT */
+.about{background:var(--bg-soft)}
+.about-grid{display:grid;grid-template-columns:340px 1fr;gap:56px;align-items:center}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr;text-align:center}}
+.about-photo{border-radius:28px;overflow:hidden;box-shadow:var(--shadow);position:relative}
+.about-photo::after{content:"";position:absolute;inset:0;border-radius:28px;border:4px solid transparent;background:var(--grad) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.about h2{font-size:clamp(22px,3vw,32px);margin-bottom:18px}
+.about p{margin-bottom:16px;font-size:17px}
+.about .sig{font-family:'Unbounded';font-weight:700;color:var(--ink);font-size:16px;line-height:1.5}
+
+/* FINAL */
+.final{background:var(--ink);text-align:center;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;inset:0;background:radial-gradient(640px 340px at 50% -10%, rgba(224,24,159,.30), transparent 70%)}
+.final .wrap{position:relative}
+.final h2{color:#fff;font-size:clamp(24px,3.4vw,38px);margin-bottom:16px}
+.final p{color:#DACDE7;font-size:18px;max-width:620px;margin:0 auto 36px}
+.final .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.final .btn-note{color:#B9A3CC}
+
+footer{background:#230838;color:#A98FC0;padding:32px 0;font-size:14px}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+footer a{color:#DACDE7;text-decoration:none;margin-left:18px}
+footer a:hover{text-decoration:underline}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand"><img src="icon.png" alt="GastroBoost"><span>GastroBoost</span></a>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" id="btn-en" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" id="btn-de" class="lang-btn" data-lang="de">DE</button>
+      </div>
+      <a href="#offer" class="btn btn-primary nav-cta" data-i18n="nav_cta">Free 14-Day Trial</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="float-emoji" style="top:12%;left:4%">🍜</span>
+  <span class="float-emoji" style="top:70%;left:8%;animation-delay:1.4s">⭐</span>
+  <span class="float-emoji" style="top:20%;right:5%;animation-delay:.8s">🍕</span>
+  <span class="float-emoji" style="bottom:8%;right:10%;animation-delay:2s">💬</span>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge-row">
+        <span class="badge"><span class="dot"></span><span data-i18n="badge1">100% Risk-Free</span></span>
+        <span class="badge"><span class="dot"></span><span data-i18n="badge2">No Contract</span></span>
+        <span class="badge"><span class="dot"></span><span data-i18n="badge3">Set Up in 48 Hours</span></span>
+      </div>
+      <h1><span data-i18n="h1_a">More 5-Star Reviews.</span><br><span class="hl" data-i18n="h1_b">Zero Missed Bookings.</span><br><span data-i18n="h1_c">You Pay Nothing for 14 Days.</span></h1>
+      <p class="sub" data-i18n="hero_sub">We install a smart Google review funnel and a 24/7 WhatsApp assistant into your restaurant — fully built for you. You cook. The system fills your tables.</p>
+      <a href="#offer" class="btn btn-primary" data-i18n="hero_cta">Claim Your Free 14-Day Setup →</a>
+      <p class="btn-note" data-i18n="hero_note">No credit card. Only 3 setup spots per month — every installation is done personally.</p>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone" aria-label="Interactive review filter demo">
+        <div class="phone-screen">
+          <div class="phone-top">
+            <div class="rest-name" data-i18n="demo_rest">Your Restaurant</div>
+            <div class="rest-sub" data-i18n="demo_rest_sub">Guest Feedback</div>
+          </div>
+          <div class="demo-body">
+            <div class="demo-q" data-i18n="demo_q">How was your meal today?</div>
+            <div class="stars" id="stars">
+              <button type="button" class="star" data-v="1" aria-label="1 star">★</button>
+              <button type="button" class="star" data-v="2" aria-label="2 stars">★</button>
+              <button type="button" class="star" data-v="3" aria-label="3 stars">★</button>
+              <button type="button" class="star" data-v="4" aria-label="4 stars">★</button>
+              <button type="button" class="star" data-v="5" aria-label="5 stars">★</button>
+            </div>
+            <div class="demo-result" id="demo-result"></div>
+            <div class="demo-hint" data-i18n="demo_hint">👆 Tap the stars — this is a live demo</div>
+          </div>
+        </div>
+      </div>
+      <p class="demo-caption" data-i18n="demo_caption">This exact QR funnel goes on your tables & receipts.</p>
+    </div>
+  </div>
+</header>
+
+<section class="pain">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="pain_eyebrow">The daily reality</span>
+    <h2 class="rv" data-i18n="pain_h2">You didn't open a restaurant to fight with your phone.</h2>
+    <p class="lead rv" data-i18n="pain_lead">But every single day, these four things quietly cost you money:</p>
+    <div class="pain-grid">
+      <div class="pain-card rv"><div class="pi">📞</div><h3 data-i18n="p1_h">The missed booking</h3><p data-i18n="p1_p">It's 8 PM, the kitchen is on fire. The phone rings. Nobody picks up. That table of six just booked with the restaurant next door.</p></div>
+      <div class="pain-card rv rv-d1"><div class="pi">⭐</div><h3 data-i18n="p2_h">The midnight 1-star</h3><p data-i18n="p2_p">One angry guest posts a bad review at midnight. By morning, hundreds of people searching nearby have seen it — and you never got a chance to fix the problem.</p></div>
+      <div class="pain-card rv rv-d2"><div class="pi">📍</div><h3 data-i18n="p3_h">The invisible listing</h3><p data-i18n="p3_p">A tourist searches for food 500 meters from your door — and Google shows your competitor first, because their profile is optimized and yours isn't.</p></div>
+      <div class="pain-card rv rv-d3"><div class="pi">💬</div><h3 data-i18n="p4_h">The same questions, forever</h3><p data-i18n="p4_p">"Are you open?" "Do you have vegetarian options?" "Table for Saturday?" Your staff answers these by hand, during your busiest hours.</p></div>
+    </div>
+    <p class="pain-close rv"><span data-i18n="pain_close_a">Hiring more staff to fix this costs €2,000+ a month.</span> <em data-i18n="pain_close_b">There's a smarter way.</em></p>
+  </div>
+</section>
+
+<section class="pillars" id="system">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow" data-i18n="sys_eyebrow">The GastroBoost System</span>
+      <h2 data-i18n="sys_h2">One system. Three engines. Working while you sleep.</h2>
+    </div>
+
+    <div class="pillar rv">
+      <div>
+        <div class="pillar-num" data-i18n="pl1_num">ENGINE 01 — REPUTATION</div>
+        <h3 data-i18n="pl1_h">The "Bad Review Filter" QR Code</h3>
+        <div class="p-tag" data-i18n="pl1_tag">Protect your rating before damage is done.</div>
+        <ul>
+          <li data-i18n="pl1_l1">Happy guests (5 stars) go straight to your public Google profile</li>
+          <li data-i18n="pl1_l2">Unhappy guests (1–3 stars) go to a private WhatsApp feedback form</li>
+          <li data-i18n="pl1_l3">You get alerted instantly and can win the guest back — nothing goes public</li>
+        </ul>
+        <div class="result" data-i18n="pl1_r">Result: your Google rating climbs week after week, while complaints become private conversations.</div>
+      </div>
+      <div class="pillar-visual">
+        <div class="mock">
+          <div class="chat-bub"><strong data-i18n="pl1_m1a">⭐⭐⭐⭐⭐ → Google</strong><br><span data-i18n="pl1_m1b">"Amazing food, great service!" — posted publicly</span></div>
+          <div class="chat-bub"><strong data-i18n="pl1_m2a">⭐⭐ → Private WhatsApp</strong><br><span data-i18n="pl1_m2b">"The soup was cold." — only you see this, fix it, win them back</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar rv">
+      <div>
+        <div class="pillar-num" data-i18n="pl2_num">ENGINE 02 — BOOKINGS</div>
+        <h3 data-i18n="pl2_h">Your 24/7 WhatsApp Restaurant Assistant</h3>
+        <div class="p-tag" data-i18n="pl2_tag">Never lose another booking to a busy phone line.</div>
+        <ul>
+          <li data-i18n="pl2_l1">Instant welcome messages — even at 11 PM when you're closed</li>
+          <li data-i18n="pl2_l2">Digital menu catalog with photos, sent in one tap</li>
+          <li data-i18n="pl2_l3">Quick replies for opening hours, parking, dietary questions</li>
+          <li data-i18n="pl2_l4">Reservation requests captured in one organized inbox</li>
+        </ul>
+        <div class="result" data-i18n="pl2_r">Result: late-night bookings answered in seconds. Your staff stops playing receptionist at peak hours.</div>
+      </div>
+      <div class="pillar-visual">
+        <div class="mock">
+          <div class="chat-bub me"><span data-i18n="pl2_m1">Hi! Table for 4 on Saturday, 7 PM?</span><div class="chat-time">23:41 ✓✓</div></div>
+          <div class="chat-bub"><span data-i18n="pl2_m2">Welcome! 🙌 Thanks for your request — we've noted Saturday 19:00 for 4 guests and will confirm first thing tomorrow. Here's our menu in the meantime 👇</span><div class="chat-time">23:41</div></div>
+          <div class="chat-bub"><span data-i18n="pl2_m3">📖 Digital Menu · 24 dishes with photos</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar rv">
+      <div>
+        <div class="pillar-num" data-i18n="pl3_num">ENGINE 03 — VISIBILITY</div>
+        <h3 data-i18n="pl3_h">Google Maps Dominance</h3>
+        <div class="p-tag" data-i18n="pl3_tag">Be the restaurant hungry people actually find.</div>
+        <ul>
+          <li data-i18n="pl3_l1">Full optimization of your Google Business Profile</li>
+          <li data-i18n="pl3_l2">Correct categories, keywords, photos and regular posts</li>
+          <li data-i18n="pl3_l3">Your rising review score pushes you into the Top 3 map results</li>
+        </ul>
+        <div class="result" data-i18n="pl3_r">Result: tourists and locals searching nearby see you first — free, organic customers every day.</div>
+      </div>
+      <div class="pillar-visual">
+        <div class="mock">
+          <div style="font-size:13px;font-weight:700;color:var(--body);margin-bottom:12px" data-i18n="pl3_m0">🔍 "restaurant near me"</div>
+          <div class="maps-mock">
+            <div class="maps-row you"><span class="rank">1</span><div><div class="rname" data-i18n="pl3_m1">Your Restaurant</div><div class="rstars">★★★★★ 4.9 (312)</div></div><span class="you-tag" data-i18n="pl3_you">YOU</span></div>
+            <div class="maps-row"><span class="rank">2</span><div><div class="rname" data-i18n="pl3_m2">Competitor A</div><div class="rstars">★★★★☆ 4.2 (87)</div></div></div>
+            <div class="maps-row"><span class="rank">3</span><div><div class="rname" data-i18n="pl3_m3">Competitor B</div><div class="rstars">★★★★☆ 4.0 (64)</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="offer">
+  <div class="wrap">
+    <div class="offer-card rv">
+      <div class="offer-top" data-i18n="offer_top">⚡ 14 DAYS · 100% FREE · €0 RISK</div>
+      <div class="offer-body">
+        <h2 data-i18n="offer_h2">Here's the deal — and why you can't lose.</h2>
+        <div class="price-row"><span class="price">€199</span><span class="price-per" data-i18n="offer_per">/month</span></div>
+        <p class="price-sub" data-i18n="offer_sub">Less than one lost table of four per week — for a system that works 24/7, never calls in sick, and never asks for a raise.</p>
+        <div class="promise" data-i18n="offer_promise">We build it. You test it. If you don't get more 5-star reviews and save real time within 14 days — we take everything down and you pay €0.</div>
+        <ul class="offer-list">
+          <li data-i18n="offer_l1">Full setup done for you in 48 hours — QR codes, WhatsApp system, Google optimization</li>
+          <li data-i18n="offer_l2">No credit card. No contract. Cancel anytime.</li>
+          <li data-i18n="offer_l3">After 14 days: continue at €199/month, or walk away. No hard feelings.</li>
+        </ul>
+        <a class="btn btn-primary wa-link" href="#" data-i18n="offer_cta">Start My Free 14-Day Trial →</a>
+        <p class="btn-note" data-i18n="offer_note">Why free? Because owners who see the reviews coming in don't want us to leave.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div class="about-photo rv"><img src="kelvin.jpg" alt="Kelvin, Restaurant Growth Consultant"></div>
+    <div class="rv rv-d1">
+      <span class="eyebrow" data-i18n="about_eyebrow">Who's behind this</span>
+      <h2 data-i18n="about_h2">Hi, I'm Kelvin 👋</h2>
+      <p data-i18n="about_p1">I'm a Restaurant Growth & Automation Consultant — and honestly, a lifelong food lover first.</p>
+      <p data-i18n="about_p2">I've spent years helping small businesses use simple technology to compete with the big players. What I kept seeing broke my heart: amazing restaurants with incredible food, losing customers to average restaurants with better Google profiles. The chef's talent was never the problem. The digital side was.</p>
+      <p data-i18n="about_p3">So I built GastroBoost: a done-for-you system that handles the reviews, the bookings and the Google ranking — so you can get back to what you actually love. The food. The guests. The craft.</p>
+      <p class="sig" data-i18n="about_sig">I keep my client list small on purpose. When you work with me, you get me — not a call center.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 class="rv" data-i18n="final_h2">Your competitors are collecting reviews tonight. Are you?</h2>
+    <p class="rv" data-i18n="final_p">In 14 days you could have a growing wall of 5-star reviews, a WhatsApp assistant answering guests around the clock, and a Google listing climbing toward the Top 3. All built for you. All free to test.</p>
+    <div class="cta-row rv">
+      <a class="btn btn-primary wa-link" href="#" data-i18n="final_cta1">Start My Free 14-Day Trial</a>
+      <a class="btn btn-wa wa-link" href="#" data-i18n="final_cta2">💬 Chat with Kelvin on WhatsApp</a>
+    </div>
+    <p class="btn-note" data-i18n="final_note">I reply personally — usually within the hour.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© <span id="yr"></span> GastroBoost · <span data-i18n="foot_tag">Restaurant Growth & Automation</span></div>
+    <div><a href="impressum.html" data-i18n="foot_imp">Impressum</a><a href="datenschutz.html" data-i18n="foot_dat">Datenschutz</a></div>
+  </div>
+</footer>
+
+<script>
+/* ============ CONFIG ============ */
+const WA_NUMBER = "60143083369";
+
+const I18N = {
+en: {
+  wa_msg: "Hi Kelvin! I'd like to start the free 14-day GastroBoost trial for my restaurant.",
+  nav_cta:"Free 14-Day Trial",
+  badge1:"100% Risk-Free", badge2:"No Contract", badge3:"Set Up in 48 Hours",
+  h1_a:"More 5-Star Reviews.", h1_b:"Zero Missed Bookings.", h1_c:"You Pay Nothing for 14 Days.",
+  hero_sub:"We install a smart Google review funnel and a 24/7 WhatsApp assistant into your restaurant — fully built for you. You cook. The system fills your tables.",
+  hero_cta:"Claim Your Free 14-Day Setup →",
+  hero_note:"No credit card. Only 3 setup spots per month — every installation is done personally.",
+  demo_rest:"Your Restaurant", demo_rest_sub:"Guest Feedback", demo_q:"How was your meal today?",
+  demo_hint:"👆 Tap the stars — this is a live demo",
+  demo_caption:"This exact QR funnel goes on your tables & receipts.",
+  demo_good_t:"→ Redirected to Google", demo_good_p:"This guest posts their 5-star review publicly. Your rating grows.",
+  demo_bad_t:"→ Private WhatsApp feedback", demo_bad_p:"This complaint comes only to you. Fix it, win them back — nothing goes public.",
+  pain_eyebrow:"The daily reality",
+  pain_h2:"You didn't open a restaurant to fight with your phone.",
+  pain_lead:"But every single day, these four things quietly cost you money:",
+  p1_h:"The missed booking", p1_p:"It's 8 PM, the kitchen is on fire. The phone rings. Nobody picks up. That table of six just booked with the restaurant next door.",
+  p2_h:"The midnight 1-star", p2_p:"One angry guest posts a bad review at midnight. By morning, hundreds of people searching nearby have seen it — and you never got a chance to fix the problem.",
+  p3_h:"The invisible listing", p3_p:"A tourist searches for food 500 meters from your door — and Google shows your competitor first, because their profile is optimized and yours isn't.",
+  p4_h:"The same questions, forever", p4_p:"\"Are you open?\" \"Do you have vegetarian options?\" \"Table for Saturday?\" Your staff answers these by hand, during your busiest hours.",
+  pain_close_a:"Hiring more staff to fix this costs €2,000+ a month.", pain_close_b:"There's a smarter way.",
+  sys_eyebrow:"The GastroBoost System",
+  sys_h2:"One system. Three engines. Working while you sleep.",
+  pl1_num:"ENGINE 01 — REPUTATION", pl1_h:"The \"Bad Review Filter\" QR Code", pl1_tag:"Protect your rating before damage is done.",
+  pl1_l1:"Happy guests (5 stars) go straight to your public Google profile",
+  pl1_l2:"Unhappy guests (1–3 stars) go to a private WhatsApp feedback form",
+  pl1_l3:"You get alerted instantly and can win the guest back — nothing goes public",
+  pl1_r:"Result: your Google rating climbs week after week, while complaints become private conversations.",
+  pl1_m1a:"⭐⭐⭐⭐⭐ → Google", pl1_m1b:"\"Amazing food, great service!\" — posted publicly",
+  pl1_m2a:"⭐⭐ → Private WhatsApp", pl1_m2b:"\"The soup was cold.\" — only you see this, fix it, win them back",
+  pl2_num:"ENGINE 02 — BOOKINGS", pl2_h:"Your 24/7 WhatsApp Restaurant Assistant", pl2_tag:"Never lose another booking to a busy phone line.",
+  pl2_l1:"Instant welcome messages — even at 11 PM when you're closed",
+  pl2_l2:"Digital menu catalog with photos, sent in one tap",
+  pl2_l3:"Quick replies for opening hours, parking, dietary questions",
+  pl2_l4:"Reservation requests captured in one organized inbox",
+  pl2_r:"Result: late-night bookings answered in seconds. Your staff stops playing receptionist at peak hours.",
+  pl2_m1:"Hi! Table for 4 on Saturday, 7 PM?",
+  pl2_m2:"Welcome! 🙌 Thanks for your request — we've noted Saturday 19:00 for 4 guests and will confirm first thing tomorrow. Here's our menu in the meantime 👇",
+  pl2_m3:"📖 Digital Menu · 24 dishes with photos",
+  pl3_num:"ENGINE 03 — VISIBILITY", pl3_h:"Google Maps Dominance", pl3_tag:"Be the restaurant hungry people actually find.",
+  pl3_l1:"Full optimization of your Google Business Profile",
+  pl3_l2:"Correct categories, keywords, photos and regular posts",
+  pl3_l3:"Your rising review score pushes you into the Top 3 map results",
+  pl3_r:"Result: tourists and locals searching nearby see you first — free, organic customers every day.",
+  pl3_m0:"🔍 \"restaurant near me\"", pl3_m1:"Your Restaurant", pl3_m2:"Competitor A", pl3_m3:"Competitor B", pl3_you:"YOU",
+  offer_top:"⚡ 14 DAYS · 100% FREE · €0 RISK",
+  offer_h2:"Here's the deal — and why you can't lose.",
+  offer_per:"/month",
+  offer_sub:"Less than one lost table of four per week — for a system that works 24/7, never calls in sick, and never asks for a raise.",
+  offer_promise:"We build it. You test it. If you don't get more 5-star reviews and save real time within 14 days — we take everything down and you pay €0.",
+  offer_l1:"Full setup done for you in 48 hours — QR codes, WhatsApp system, Google optimization",
+  offer_l2:"No credit card. No contract. Cancel anytime.",
+  offer_l3:"After 14 days: continue at €199/month, or walk away. No hard feelings.",
+  offer_cta:"Start My Free 14-Day Trial →",
+  offer_note:"Why free? Because owners who see the reviews coming in don't want us to leave.",
+  about_eyebrow:"Who's behind this",
+  about_h2:"Hi, I'm Kelvin 👋",
+  about_p1:"I'm a Restaurant Growth & Automation Consultant — and honestly, a lifelong food lover first.",
+  about_p2:"I've spent years helping small businesses use simple technology to compete with the big players. What I kept seeing broke my heart: amazing restaurants with incredible food, losing customers to average restaurants with better Google profiles. The chef's talent was never the problem. The digital side was.",
+  about_p3:"So I built GastroBoost: a done-for-you system that handles the reviews, the bookings and the Google ranking — so you can get back to what you actually love. The food. The guests. The craft.",
+  about_sig:"I keep my client list small on purpose. When you work with me, you get me — not a call center.",
+  final_h2:"Your competitors are collecting reviews tonight. Are you?",
+  final_p:"In 14 days you could have a growing wall of 5-star reviews, a WhatsApp assistant answering guests around the clock, and a Google listing climbing toward the Top 3. All built for you. All free to test.",
+  final_cta1:"Start My Free 14-Day Trial",
+  final_cta2:"💬 Chat with Kelvin on WhatsApp",
+  final_note:"I reply personally — usually within the hour.",
+  foot_tag:"Restaurant Growth & Automation", foot_imp:"Legal Notice", foot_dat:"Privacy Policy"
+},
+de: {
+  wa_msg: "Hallo Kelvin! Ich möchte die kostenlose 14-Tage-Testphase von GastroBoost für mein Restaurant starten.",
+  nav_cta:"14 Tage kostenlos testen",
+  badge1:"100% risikofrei", badge2:"Keine Vertragsbindung", badge3:"Einrichtung in 48 Stunden",
+  h1_a:"Mehr 5-Sterne-Bewertungen.", h1_b:"Keine verpassten Reservierungen.", h1_c:"14 Tage komplett kostenlos.",
+  hero_sub:"Wir richten für Ihr Restaurant einen intelligenten Google-Bewertungs-Funnel und einen WhatsApp-Assistenten ein, der rund um die Uhr antwortet — komplett für Sie aufgebaut. Sie kochen. Das System füllt Ihre Tische.",
+  hero_cta:"Kostenlose 14-Tage-Einrichtung sichern →",
+  hero_note:"Keine Kreditkarte nötig. Nur 3 Einrichtungsplätze pro Monat — jede Installation erfolgt persönlich.",
+  demo_rest:"Ihr Restaurant", demo_rest_sub:"Gäste-Feedback", demo_q:"Wie hat es Ihnen heute geschmeckt?",
+  demo_hint:"👆 Tippen Sie auf die Sterne — Live-Demo",
+  demo_caption:"Genau dieser QR-Funnel kommt auf Ihre Tische & Kassenbons.",
+  demo_good_t:"→ Weiterleitung zu Google", demo_good_p:"Dieser Gast veröffentlicht seine 5-Sterne-Bewertung öffentlich. Ihre Bewertung wächst.",
+  demo_bad_t:"→ Privates WhatsApp-Feedback", demo_bad_p:"Diese Beschwerde erreicht nur Sie. Problem lösen, Gast zurückgewinnen — nichts wird öffentlich.",
+  pain_eyebrow:"Der tägliche Alltag",
+  pain_h2:"Sie haben kein Restaurant eröffnet, um mit dem Telefon zu kämpfen.",
+  pain_lead:"Aber jeden einzelnen Tag kosten Sie diese vier Dinge bares Geld:",
+  p1_h:"Die verpasste Reservierung", p1_p:"Es ist 20 Uhr, die Küche brennt. Das Telefon klingelt. Niemand geht ran. Der 6er-Tisch reserviert beim Restaurant nebenan.",
+  p2_h:"Die 1-Stern-Bewertung um Mitternacht", p2_p:"Ein verärgerter Gast schreibt nachts eine schlechte Bewertung. Am Morgen haben Hunderte sie bereits gesehen — und Sie hatten nie die Chance, das Problem zu lösen.",
+  p3_h:"Der unsichtbare Eintrag", p3_p:"Ein Tourist sucht 500 Meter vor Ihrer Tür nach Essen — und Google zeigt zuerst Ihre Konkurrenz, weil deren Profil optimiert ist und Ihres nicht.",
+  p4_h:"Immer dieselben Fragen", p4_p:"„Haben Sie geöffnet?“ „Gibt es vegetarische Gerichte?“ „Tisch für Samstag?“ Ihr Personal beantwortet das von Hand — mitten in der Stoßzeit.",
+  pain_close_a:"Mehr Personal einzustellen kostet über 2.000 € im Monat.", pain_close_b:"Es geht klüger.",
+  sys_eyebrow:"Das GastroBoost-System",
+  sys_h2:"Ein System. Drei Motoren. Arbeitet, während Sie schlafen.",
+  pl1_num:"MOTOR 01 — REPUTATION", pl1_h:"Der „Schlechte-Bewertungen-Filter“ QR-Code", pl1_tag:"Schützen Sie Ihre Bewertung, bevor Schaden entsteht.",
+  pl1_l1:"Zufriedene Gäste (5 Sterne) gelangen direkt zu Ihrem öffentlichen Google-Profil",
+  pl1_l2:"Unzufriedene Gäste (1–3 Sterne) landen in einem privaten WhatsApp-Feedback-Formular",
+  pl1_l3:"Sie werden sofort benachrichtigt und können den Gast zurückgewinnen — nichts wird öffentlich",
+  pl1_r:"Ergebnis: Ihre Google-Bewertung steigt Woche für Woche, während Beschwerden zu privaten Gesprächen werden.",
+  pl1_m1a:"⭐⭐⭐⭐⭐ → Google", pl1_m1b:"„Fantastisches Essen, toller Service!“ — öffentlich gepostet",
+  pl1_m2a:"⭐⭐ → Privates WhatsApp", pl1_m2b:"„Die Suppe war kalt.“ — nur Sie sehen das, lösen es, gewinnen den Gast zurück",
+  pl2_num:"MOTOR 02 — RESERVIERUNGEN", pl2_h:"Ihr WhatsApp-Assistent — rund um die Uhr", pl2_tag:"Verlieren Sie nie wieder eine Reservierung an ein besetztes Telefon.",
+  pl2_l1:"Sofortige Begrüßungsnachrichten — auch um 23 Uhr, wenn Sie geschlossen haben",
+  pl2_l2:"Digitale Speisekarte mit Fotos, mit einem Tipp versendet",
+  pl2_l3:"Schnellantworten für Öffnungszeiten, Parkplätze, Ernährungsfragen",
+  pl2_l4:"Reservierungsanfragen landen in einem übersichtlichen Posteingang",
+  pl2_r:"Ergebnis: Nächtliche Anfragen werden in Sekunden beantwortet. Ihr Personal spielt in der Stoßzeit nicht mehr Rezeption.",
+  pl2_m1:"Hallo! Tisch für 4 am Samstag, 19 Uhr?",
+  pl2_m2:"Willkommen! 🙌 Danke für Ihre Anfrage — wir haben Samstag 19:00 Uhr für 4 Gäste notiert und bestätigen gleich morgen früh. Hier schon mal unsere Speisekarte 👇",
+  pl2_m3:"📖 Digitale Speisekarte · 24 Gerichte mit Fotos",
+  pl3_num:"MOTOR 03 — SICHTBARKEIT", pl3_h:"Ganz oben auf Google Maps", pl3_tag:"Seien Sie das Restaurant, das hungrige Menschen wirklich finden.",
+  pl3_l1:"Vollständige Optimierung Ihres Google-Unternehmensprofils",
+  pl3_l2:"Richtige Kategorien, Suchbegriffe, Fotos und regelmäßige Beiträge",
+  pl3_l3:"Ihre steigende Bewertung bringt Sie in die Top 3 der Kartenergebnisse",
+  pl3_r:"Ergebnis: Touristen und Einheimische in Ihrer Nähe sehen Sie zuerst — kostenlose, organische Gäste, jeden Tag.",
+  pl3_m0:"🔍 „Restaurant in der Nähe“", pl3_m1:"Ihr Restaurant", pl3_m2:"Konkurrent A", pl3_m3:"Konkurrent B", pl3_you:"SIE",
+  offer_top:"⚡ 14 TAGE · 100% KOSTENLOS · 0 € RISIKO",
+  offer_h2:"Das Angebot — und warum Sie nicht verlieren können.",
+  offer_per:"/Monat",
+  offer_sub:"Weniger als ein verlorener 4er-Tisch pro Woche — für ein System, das rund um die Uhr arbeitet, nie krank wird und nie eine Gehaltserhöhung verlangt.",
+  offer_promise:"Wir bauen es auf. Sie testen es. Wenn Sie in 14 Tagen nicht mehr 5-Sterne-Bewertungen bekommen und spürbar Zeit sparen — bauen wir alles wieder ab und Sie zahlen 0 €.",
+  offer_l1:"Komplette Einrichtung in 48 Stunden — QR-Codes, WhatsApp-System, Google-Optimierung",
+  offer_l2:"Keine Kreditkarte. Keine Vertragsbindung. Jederzeit kündbar.",
+  offer_l3:"Nach 14 Tagen: weiter für 199 €/Monat — oder Sie hören einfach auf. Kein Problem.",
+  offer_cta:"Kostenlos 14 Tage testen →",
+  offer_note:"Warum kostenlos? Weil Inhaber, die die Bewertungen reinkommen sehen, nicht wollen, dass wir wieder gehen.",
+  about_eyebrow:"Wer dahinter steht",
+  about_h2:"Hallo, ich bin Kelvin 👋",
+  about_p1:"Ich bin Berater für Restaurant-Wachstum und Automatisierung — und ehrlich gesagt zuerst einmal ein leidenschaftlicher Genießer.",
+  about_p2:"Seit Jahren helfe ich kleinen Unternehmen, mit einfacher Technik gegen die Großen zu bestehen. Was ich immer wieder sah, hat mir wehgetan: großartige Restaurants mit fantastischem Essen verlieren Gäste an mittelmäßige Restaurants mit besseren Google-Profilen. Das Talent des Kochs war nie das Problem. Die digitale Seite schon.",
+  about_p3:"Deshalb habe ich GastroBoost entwickelt: ein Rundum-System für Bewertungen, Reservierungen und Google-Ranking — damit Sie sich wieder dem widmen können, was Sie wirklich lieben. Dem Essen. Den Gästen. Dem Handwerk.",
+  about_sig:"Ich halte meine Kundenliste bewusst klein. Wer mit mir arbeitet, bekommt mich — kein Callcenter.",
+  final_h2:"Ihre Konkurrenz sammelt heute Abend Bewertungen. Und Sie?",
+  final_p:"In 14 Tagen könnten Sie eine wachsende Wand aus 5-Sterne-Bewertungen haben, einen WhatsApp-Assistenten, der Gäste rund um die Uhr betreut, und ein Google-Profil auf dem Weg in die Top 3. Alles für Sie aufgebaut. Alles kostenlos zum Testen.",
+  final_cta1:"Kostenlos 14 Tage testen",
+  final_cta2:"💬 Mit Kelvin auf WhatsApp schreiben",
+  final_note:"Ich antworte persönlich — meist innerhalb einer Stunde.",
+  foot_tag:"Restaurant-Wachstum & Automatisierung", foot_imp:"Impressum", foot_dat:"Datenschutz"
+}
+};
+
+let lang = 'en';
+
+function setLang(l){
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.lang === l);
+  });
+  var dict = I18N[l];
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k = el.getAttribute('data-i18n');
+    if(dict[k] !== undefined) el.textContent = dict[k];
+  });
+  updateWaLinks();
+  resetDemo();
+}
+
+function updateWaLinks(){
+  var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(I18N[lang].wa_msg);
+  document.querySelectorAll('.wa-link').forEach(function(el){ el.href = url; });
+}
+
+/* Language toggle — addEventListener, no inline onclick */
+document.querySelectorAll('.lang-btn').forEach(function(b){
+  b.addEventListener('click', function(){ setLang(b.dataset.lang); });
+});
+
+/* Review filter demo */
+var starsEl = document.querySelectorAll('#stars .star');
+var resultEl = document.getElementById('demo-result');
+starsEl.forEach(function(s){
+  s.addEventListener('click', function(){
+    var v = parseInt(s.dataset.v);
+    starsEl.forEach(function(x){ x.classList.toggle('lit', parseInt(x.dataset.v) <= v); });
+    var d = I18N[lang];
+    if(v >= 4){
+      resultEl.innerHTML = '<div class="route-card route-google"><div class="route-icon">🎉</div><strong>'+d.demo_good_t+'</strong><br>'+d.demo_good_p+'</div>';
+    } else {
+      resultEl.innerHTML = '<div class="route-card route-wa"><div class="route-icon">🔒</div><strong>'+d.demo_bad_t+'</strong><br>'+d.demo_bad_p+'</div>';
+    }
+    resultEl.classList.add('show');
+  });
+});
+function resetDemo(){
+  starsEl.forEach(function(x){ x.classList.remove('lit'); });
+  resultEl.classList.remove('show');
+  resultEl.innerHTML = '';
+}
+
+/* Scroll reveal */
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
+}
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+if((navigator.language||'').toLowerCase().indexOf('de') === 0){ setLang('de'); } else { setLang('en'); }
+</script>
+</body>
+</html>
